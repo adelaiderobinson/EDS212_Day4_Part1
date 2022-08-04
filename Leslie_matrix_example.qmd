@@ -1,0 +1,42 @@
+---
+title: "Lelsie Matrix Example"
+author: "Adelaide Robinson"
+format: html
+editor: visual
+---
+
+## Leslie Matrix example
+
+Model population changes using the same example we did in lecture
+
+```{r}
+#putting vectore within the matrix function
+insect_leslie <- matrix(data=c(0, 0, 600, 0.2, 0, 0, 0, 0.8, 0), nrow =3 ,ncol = 3, byrow = TRUE)
+insect_leslie
+
+```
+
+```{r}
+#create a vector for the initial condition values
+#12000 eggs, 700 larvae, 500 females in year zero
+insect_y0 <- c(12000, 700, 500)
+```
+
+```{r}
+#multiply these to find the initial condition
+#use symbol for the dot product
+insect_y1 <- insect_leslie %*% insect_y0
+insect_y1
+```
+
+Estimate populations at each life stage at year 2 and year three
+
+```{r}
+#be careful of order 
+insect_y2 <- insect_leslie %*% insect_y1
+insect_y3 <- insect_leslie  %*% insect_y2
+```
+
+### Notes on using Quarto
+
+render is the knit button
